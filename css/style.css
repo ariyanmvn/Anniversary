@@ -655,7 +655,7 @@ body {
 }
 
 .cake-container {
-    width: min(280px, 90vw);
+    width: min(320px, 95vw);
     margin-bottom: var(--spacing-lg);
     cursor: pointer;
     position: relative;
@@ -663,7 +663,7 @@ body {
 
 .cake {
     width: 100%;
-    height: 220px;
+    height: 280px;
     position: relative;
     transition: all var(--transition-slow);
 }
@@ -674,99 +674,191 @@ body {
 
 .cake-layer {
     width: 100%;
-    height: 70px;
-    background: linear-gradient(135deg, #F5E6D3 0%, #E8D4C4 100%);
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    height: 90px;
+    background: linear-gradient(180deg, #F5DEB3 0%, #DEB887 50%, #D2B48C 100%);
+    border-radius: 0 0 12px 12px;
     position: absolute;
     bottom: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.cake-layer::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: linear-gradient(180deg, #FFB6C1 0%, #FF91A4 100%);
+    border-radius: 50px;
 }
 
 .cake-layer-2 {
-    bottom: 60px;
+    bottom: 75px;
     width: 85%;
     left: 7.5%;
-    background: linear-gradient(135deg, #FDEAE0 0%, #F9D5D3 100%);
+    background: linear-gradient(180deg, #FFEFD5 0%, #FFE4B5 50%, #FFDAB9 100%);
+}
+
+.cake-layer-2::before {
+    background: linear-gradient(180deg, #DDA0DD 0%, #DA70D6 100%);
 }
 
 .cake-top {
     width: 100%;
-    height: 30px;
-    background: linear-gradient(135deg, var(--color-rose) 0%, #D4786A 100%);
+    height: 40px;
+    background: radial-gradient(circle at 50% 20%, #FF69B4, #FF1493, #C71585);
     position: absolute;
-    bottom: 130px;
+    bottom: 155px;
     border-radius: 50%;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cake-top::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 
+        30px -5px 0 0 #FF6347,
+        60px 5px 0 0 #40E0D0,
+        20px 20px 0 0 #98FB98,
+        50px 15px 0 0 #FF69B4,
+        80px 10px 0 0 #FFD700,
+        120px 0 0 0 #FF6347,
+        150px 8px 0 0 #40E0D0,
+        180px 18px 0 0 #98FB98,
+        220px 5px 0 0 #FF69B4,
+        250px 12px 0 0 #FFD700;
 }
 
 .cake-candle {
-    width: 12px;
-    height: 40px;
-    background: linear-gradient(135deg, #FFD93D 0%, #FFA500 100%);
+    width: 14px;
+    height: 50px;
+    background: repeating-linear-gradient(
+        0deg,
+        #FFD700,
+        #FFD700 8px,
+        #FFA500 8px,
+        #FFA500 16px
+    );
     position: absolute;
-    bottom: 140px;
+    bottom: 170px;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cake-candle::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 8px;
+    background: #333;
+    border-radius: 1px;
 }
 
 .cake-candle-2 {
-    left: 30%;
+    left: 25%;
+    background: repeating-linear-gradient(
+        0deg,
+        #FF69B4,
+        #FF69B4 8px,
+        #FF1493 8px,
+        #FF1493 16px
+    );
 }
 
 .cake-candle-3 {
-    left: 70%;
+    left: 75%;
+    background: repeating-linear-gradient(
+        0deg,
+        #87CEEB,
+        #87CEEB 8px,
+        #4169E1 8px,
+        #4169E1 16px
+    );
 }
 
 .flame {
-    width: 14px;
-    height: 22px;
-    background: radial-gradient(circle at 50% 70%, #FFD700, #FF8C00, #FF4500);
+    width: 16px;
+    height: 26px;
+    background: radial-gradient(circle at 50% 70%, #FFFACD 0%, #FFD700 30%, #FF8C00 70%, #FF4500 100%);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     position: absolute;
-    top: -20px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    animation: flicker 0.5s ease-in-out infinite alternate;
+    animation: flicker 0.4s ease-in-out infinite alternate;
+    box-shadow: 0 0 12px #FFD700, 0 0 24px #FFA500;
 }
 
 @keyframes flicker {
-    0% { transform: translateX(-50%) scale(1); opacity: 1; }
-    100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+    0% { 
+        transform: translateX(-50%) scale(1) rotate(-2deg); 
+        opacity: 1; 
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05) rotate(1deg);
+        opacity: 0.9;
+    }
+    100% { 
+        transform: translateX(-50%) scale(1.1) rotate(-1deg); 
+        opacity: 0.85; 
+    }
 }
 
 .cake-knife {
-    width: 100px;
-    height: 15px;
-    background: linear-gradient(180deg, #C0C0C0, #808080);
+    width: 120px;
+    height: 18px;
+    background: linear-gradient(180deg, #E8E8E8, #C0C0C0, #A8A8A8);
     position: absolute;
-    top: 80px;
-    right: -60px;
-    transform: rotate(45deg);
-    border-radius: 2px;
-    transition: all var(--transition-slow);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    top: 100px;
+    right: -70px;
+    transform: rotate(40deg);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .cake-knife::before {
     content: '';
-    width: 30px;
-    height: 20px;
-    background: linear-gradient(135deg, #8B4513, #A0522D);
+    width: 35px;
+    height: 22px;
+    background: linear-gradient(135deg, #8B4513, #A0522D, #8B4513);
     position: absolute;
-    left: -25px;
-    top: -2.5px;
-    border-radius: 4px;
+    left: -30px;
+    top: -2px;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.cake-knife::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .cake-cut .cake-knife {
-    transform: rotate(0deg) translateY(80px);
+    transform: rotate(0deg) translateY(100px);
     right: 50%;
 }
 
 .cake-hint {
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-charcoal);
     font-weight: 600;
     margin-top: var(--spacing-md);
