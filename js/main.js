@@ -110,6 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
         candlesBlown = false;
         flames.forEach(flame => flame.classList.remove('blown'));
         smokes.forEach(smoke => smoke.classList.remove('active'));
+        
+        // Reset typing elements
+        document.getElementById('typing-preamble').textContent = '';
+        document.getElementById('typing-text').textContent = '';
+        document.getElementById('typing-signoff').textContent = '';
+        document.getElementById('cursor-preamble').style.display = 'inline-block';
+        document.getElementById('cursor-text').style.display = 'inline-block';
+        document.getElementById('cursor-signoff').style.display = 'inline-block';
+        document.getElementById('typing-text-container').style.display = 'none';
+        document.getElementById('typing-signoff-container').style.display = 'none';
     }
     
     blowBtn.addEventListener('click', () => {
@@ -140,12 +150,75 @@ document.addEventListener('DOMContentLoaded', () => {
         
         setTimeout(() => {
             giftMessage.classList.add('visible');
+            startTyping();
         }, 900); // Wait for cake to almost disappear
-        
-        setTimeout(() => {
-            finalChapterBtn.style.display = 'inline-block';
-        }, 1300);
     });
+    
+    function startTyping() {
+        const preamble = "To Shihab,";
+        const text = "Two years ago, I met the person who makes every day brighter, every laugh louder, and every moment more meaningful. Thank you for being my best friend, my partner, and my everything. Here's to countless more anniversaries together! I love you more than words can say.";
+        const signoff = "Forever yours,<br>Jerin ❤️";
+        
+        typeText(preamble, 'typing-preamble', 'cursor-preamble', 100, () => {
+            document.getElementById('typing-text-container').style.display = 'block';
+            typeText(text, 'typing-text', 'cursor-text', 50, () => {
+                document.getElementById('typing-signoff-container').style.display = 'block';
+                typeHTML(signoff, 'typing-signoff', 'cursor-signoff', 100, () => {
+                    setTimeout(() => {
+                        finalChapterBtn.style.display = 'inline-block';
+                    }, 500);
+                });
+            });
+        });
+    }
+    
+    function typeText(text, elementId, cursorId, speed, callback) {
+        const element = document.getElementById(elementId);
+        const cursor = document.getElementById(cursorId);
+        let index = 0;
+        
+        element.textContent = '';
+        
+        const typingInterval = setInterval(() => {
+            if (index < text.length) {
+                element.textContent += text[index];
+                index++;
+            } else {
+                clearInterval(typingInterval);
+                cursor.style.display = 'none';
+                if (callback) callback();
+            }
+        }, speed);
+    }
+    
+    function typeHTML(html, elementId, cursorId, speed, callback) {
+        const element = document.getElementById(elementId);
+        const cursor = document.getElementById(cursorId);
+        let index = 0;
+        let currentHTML = '';
+        
+        element.innerHTML = '';
+        
+        const typingInterval = setInterval(() => {
+            if (index < html.length) {
+                // Check if we're starting a tag
+                if (html[index] === '<') {
+                    // Find end of tag
+                    const endIndex = html.indexOf('>', index);
+                    currentHTML += html.slice(index, endIndex + 1);
+                    index = endIndex + 1;
+                } else {
+                    currentHTML += html[index];
+                    index++;
+                }
+                element.innerHTML = currentHTML;
+            } else {
+                clearInterval(typingInterval);
+                cursor.style.display = 'none';
+                if (callback) callback();
+            }
+        }, speed);
+    }
     
     function launchBalloons() {
         const balloonsContainer = document.getElementById('balloons');
