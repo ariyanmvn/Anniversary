@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cakeContainer.classList.remove('cake-cut');
         giftMessage.classList.remove('visible');
         finalChapterBtn.style.display = 'none';
+        const balloonsContainer = document.getElementById('balloons');
+        balloonsContainer.innerHTML = '';
     }
     
     cakeContainer.addEventListener('click', () => {
@@ -105,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         cakeContainer.classList.add('cake-cut');
         launchConfetti();
+        launchBalloons();
         
         setTimeout(() => {
             giftMessage.classList.add('visible');
@@ -114,6 +117,26 @@ document.addEventListener('DOMContentLoaded', () => {
             finalChapterBtn.style.display = 'inline-block';
         }, 1000);
     });
+    
+    function launchBalloons() {
+        const balloonsContainer = document.getElementById('balloons');
+        const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#FF8E72', '#A8E6CF', '#FFD3B6', '#FFAAA5'];
+        
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = `${10 + i * 12}%`;
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.animationDelay = `${i * 0.1}s`;
+                balloonsContainer.appendChild(balloon);
+                
+                setTimeout(() => {
+                    balloon.classList.add('float');
+                }, 50);
+            }, i * 150);
+        }
+    }
     
     // ========================================
     // COUNTDOWN

@@ -856,6 +856,66 @@ body {
     right: 50%;
 }
 
+.balloons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.balloon {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 50px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background: #888;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+}
+
+.balloon.float {
+    opacity: 1;
+    transform: scale(1);
+    animation: floatUp 4s ease-in-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        bottom: 350px;
+        opacity: 0;
+    }
+}
+
 .cake-hint {
     font-family: var(--font-sans);
     font-size: 0.95rem;
