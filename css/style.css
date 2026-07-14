@@ -12,7 +12,8 @@
     --color-tape: #F5E6C8;
     --color-tape-alt: #E8F5E9;
     
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-cursive: 'Great Vibes', cursive;
     --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     
     --spacing-xs: 0.5rem;
@@ -264,8 +265,8 @@ body {
 }
 
 .chapter-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-family: var(--font-cursive);
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
     font-weight: 600;
     color: var(--color-charcoal);
     line-height: 1.2;
@@ -1128,16 +1129,16 @@ body {
 }
 
 .final-title {
-    font-family: var(--font-serif);
-    font-size: 2rem;
+    font-family: var(--font-cursive);
+    font-size: clamp(2rem, 7vw, 3rem);
     font-weight: 700;
     color: var(--color-charcoal);
     margin-bottom: var(--spacing-sm);
 }
 
 .final-names {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
+    font-family: var(--font-cursive);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 600;
     color: var(--color-rose);
     margin-bottom: var(--spacing-lg);
