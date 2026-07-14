@@ -88,22 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // ========================================
-    // CHAPTER 4 - GIFT BOX
+    // CHAPTER 4 - CAKE
     // ========================================
-    const giftBox = document.getElementById('giftBox');
+    const cakeContainer = document.getElementById('cakeContainer');
     const giftMessage = document.getElementById('giftMessage');
     const finalChapterBtn = document.getElementById('finalChapterBtn');
     
     function resetChapter4() {
-        giftBox.classList.remove('opened');
+        cakeContainer.classList.remove('cake-cut');
         giftMessage.classList.remove('visible');
         finalChapterBtn.style.display = 'none';
     }
     
-    giftBox.addEventListener('click', () => {
-        if (giftBox.classList.contains('opened')) return;
+    cakeContainer.addEventListener('click', () => {
+        if (cakeContainer.classList.contains('cake-cut')) return;
         
-        giftBox.classList.add('opened');
+        cakeContainer.classList.add('cake-cut');
         launchConfetti();
         
         setTimeout(() => {
