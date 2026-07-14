@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function resetChapter1() {
         invitationEnvelope.classList.remove('opened');
+        invitationEnvelope.classList.remove('hidden');
         invitationContent.classList.remove('visible');
     }
     
@@ -80,6 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             invitationContent.classList.add('visible');
         }, 400);
+        
+        setTimeout(() => {
+            invitationEnvelope.classList.add('hidden');
+        }, 800);
     });
     
     // ========================================
