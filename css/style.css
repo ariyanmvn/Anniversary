@@ -916,6 +916,39 @@ body {
     }
 }
 
+.blow-btn {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-rose), #D4786A);
+    color: var(--color-white);
+    cursor: pointer;
+    margin-top: var(--spacing-md);
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.blow-btn.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.flame.blown {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+    transition: all 0.5s ease;
+}
+
 .cake-hint {
     font-family: var(--font-sans);
     font-size: 0.95rem;

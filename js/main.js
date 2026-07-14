@@ -93,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const cakeContainer = document.getElementById('cakeContainer');
     const giftMessage = document.getElementById('giftMessage');
     const finalChapterBtn = document.getElementById('finalChapterBtn');
+    const blowBtn = document.getElementById('blowBtn');
+    const cakeHint = document.getElementById('cakeHint');
+    const flames = document.querySelectorAll('.flame');
+    let candlesBlown = false;
     
     function resetChapter4() {
         cakeContainer.classList.remove('cake-cut');
@@ -100,10 +104,32 @@ document.addEventListener('DOMContentLoaded', () => {
         finalChapterBtn.style.display = 'none';
         const balloonsContainer = document.getElementById('balloons');
         balloonsContainer.innerHTML = '';
+        blowBtn.classList.remove('hidden');
+        cakeHint.style.display = 'none';
+        candlesBlown = false;
+        flames.forEach(flame => flame.classList.remove('blown'));
     }
     
-    cakeContainer.addEventListener('click', () => {
+    blowBtn.addEventListener('click', () => {
+        if (candlesBlown) return;
+        
+        candlesBlown = true;
+        flames.forEach((flame, index) => {
+            setTimeout(() => {
+                flame.classList.add('blown');
+            }, index * 100);
+        });
+        
+        setTimeout(() => {
+            blowBtn.classList.add('hidden');
+            cakeHint.style.display = 'block';
+        }, 600);
+    });
+    
+    cakeContainer.addEventListener('click', (e) => {
+        if (!candlesBlown) return;
         if (cakeContainer.classList.contains('cake-cut')) return;
+        if (e.target === blowBtn) return;
         
         cakeContainer.classList.add('cake-cut');
         launchConfetti();
