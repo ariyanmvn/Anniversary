@@ -235,8 +235,8 @@ body {
     transform: translateY(20px);
     transition: all var(--transition-slow);
     overflow-y: auto;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
 }
 
 .chapter.active {
@@ -251,7 +251,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
@@ -259,7 +259,7 @@ body {
 
 .chapter-header {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .chapter-number {
@@ -292,7 +292,7 @@ body {
     height: 200px;
     position: relative;
     cursor: pointer;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     animation: envelope-float 4s ease-in-out infinite;
 }
 
@@ -373,7 +373,7 @@ body {
     visibility: hidden;
     transform: scale(0.9);
     transition: all var(--transition-slow);
-    margin-top: -80px;
+    margin-top: -40px;
 }
 
 .invitation-content.visible {
@@ -911,7 +911,7 @@ body {
     border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
 }
 
 .chapter-btn {
