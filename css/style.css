@@ -237,8 +237,9 @@ body {
     transform: translateY(20px);
     transition: all var(--transition-slow);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding-top: 4.5rem;
-    padding-bottom: 5.5rem;
+    padding-bottom: 8rem;
 }
 
 .chapter.active {
@@ -248,15 +249,17 @@ body {
 }
 
 .chapter-content {
-    flex: 1;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: var(--spacing-md);
+    padding-bottom: 1rem;
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
+    min-height: 100%;
 }
 
 .chapter-header {
@@ -965,6 +968,29 @@ body {
 /* ========================================
    Responsive Styles
    ======================================== */
+@media (max-width: 480px) {
+    .music-player {
+        padding: 0.5rem;
+    }
+    
+    .disc-container {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .music-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .surprise-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+}
+
 @media (min-width: 481px) {
     .chapter-content {
         padding: var(--spacing-lg);
