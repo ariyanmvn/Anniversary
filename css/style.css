@@ -662,6 +662,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 350px; /* Make space for cake and message */
 }
 
 .cake {
@@ -669,10 +670,6 @@ body {
     height: 280px;
     position: relative;
     transition: all var(--transition-slow);
-}
-
-.cake-cut .cake {
-    transform: scale(0.95);
 }
 
 .cake-layer {
@@ -1045,6 +1042,9 @@ body {
 }
 
 .gift-message {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     opacity: 0;
     transform: translateY(20px);
