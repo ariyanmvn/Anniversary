@@ -34,6 +34,9 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.4s ease;
     --transition-slow: 0.6s ease;
+    
+    --z-floating: 1000;
+    --z-canvas: 9999;
 }
 
 /* ========================================
@@ -49,6 +52,8 @@ html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: 100%;
 }
 
 body {
@@ -56,9 +61,10 @@ body {
     background-color: var(--color-cream);
     color: var(--color-charcoal);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
 /* ========================================
@@ -69,7 +75,7 @@ body {
     top: var(--spacing-sm);
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: var(--z-floating);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,6 +84,7 @@ body {
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
 }
 
 .progress-dots {
@@ -111,21 +118,22 @@ body {
    ======================================== */
 .music-player {
     position: fixed;
-    bottom: var(--spacing-md);
-    left: var(--spacing-md);
-    z-index: 1000;
+    bottom: var(--spacing-sm);
+    left: var(--spacing-sm);
+    z-index: var(--z-floating);
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
     background: var(--color-white);
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
 }
 
 .disc-container {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
 }
 
 .disc {
@@ -149,8 +157,8 @@ body {
 }
 
 .disc-hole {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: var(--color-cream);
 }
@@ -175,13 +183,10 @@ body {
     justify-content: center;
 }
 
-.music-btn:hover {
-    background: var(--color-rose);
-    transform: scale(1.1);
-}
-
+.music-btn:hover,
 .music-btn:active {
-    transform: scale(0.95);
+    background: var(--color-rose);
+    transform: scale(1.05);
 }
 
 /* ========================================
@@ -189,16 +194,16 @@ body {
    ======================================== */
 .surprise-btn {
     position: fixed;
-    bottom: var(--spacing-md);
-    right: var(--spacing-md);
-    z-index: 1000;
-    width: 56px;
-    height: 56px;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    z-index: var(--z-floating);
+    width: 48px;
+    height: 48px;
     border: none;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-rose), var(--color-soft-pink));
     color: var(--color-white);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     box-shadow: var(--shadow-medium);
     transition: all var(--transition-fast);
@@ -210,13 +215,10 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-.surprise-btn:hover {
+.surprise-btn:hover,
+.surprise-btn:active {
     transform: scale(1.1);
     box-shadow: var(--shadow-large);
-}
-
-.surprise-btn:active {
-    transform: scale(0.95);
 }
 
 /* ========================================
@@ -235,8 +237,8 @@ body {
     transform: translateY(20px);
     transition: all var(--transition-slow);
     overflow-y: auto;
-    padding-top: 4rem;
-    padding-bottom: 6rem;
+    padding-top: 4.5rem;
+    padding-bottom: 5.5rem;
 }
 
 .chapter.active {
@@ -274,31 +276,32 @@ body {
 
 .chapter-title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--color-charcoal);
     line-height: 1.2;
 }
 
 /* ========================================
-   Chapter 1 - Invitation
+   Chapter 1: The Invitation
    ======================================== */
 .chapter-1 {
     background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-peach) 100%);
 }
 
 .invitation-envelope {
-    width: 280px;
-    height: 200px;
+    width: min(260px, 70vw);
+    height: auto;
+    aspect-ratio: 280/200;
     position: relative;
     cursor: pointer;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     animation: envelope-float 4s ease-in-out infinite;
 }
 
 @keyframes envelope-float {
     0%, 100% { transform: translateY(0) rotate(-1deg); }
-    50% { transform: translateY(-12px) rotate(1deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
 }
 
 .invitation-envelope.opened {
@@ -346,8 +349,8 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     background: linear-gradient(135deg, var(--color-rose), #D4786A);
     border-radius: var(--radius-md);
     display: flex;
@@ -359,7 +362,7 @@ body {
 }
 
 .seal-heart {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--color-white);
 }
 
@@ -373,7 +376,9 @@ body {
     visibility: hidden;
     transform: scale(0.9);
     transition: all var(--transition-slow);
-    margin-top: -40px;
+    margin-top: -20px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .invitation-content.visible {
@@ -384,11 +389,11 @@ body {
 
 .invitation-card {
     background: var(--color-white);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-large);
     text-align: center;
-    max-width: 400px;
+    width: 100%;
 }
 
 .invitation-preamble {
@@ -402,7 +407,7 @@ body {
 
 .couple-names {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--color-rose);
     margin: var(--spacing-md) 0;
@@ -410,14 +415,14 @@ body {
 
 .invitation-date {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--color-soft-gray);
     margin-bottom: var(--spacing-md);
 }
 
 .invitation-quote {
     font-family: var(--font-serif);
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     font-style: italic;
     color: var(--color-charcoal);
     line-height: 1.7;
@@ -435,14 +440,15 @@ body {
     height: 100%;
     pointer-events: none;
     overflow: hidden;
+    z-index: 0;
 }
 
 .floating-heart,
 .floating-star {
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     animation: floating 6s ease-in-out infinite;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 @keyframes floating {
@@ -450,12 +456,12 @@ body {
         transform: translateY(0) rotate(0deg);
     }
     50% {
-        transform: translateY(-20px) rotate(10deg);
+        transform: translateY(-15px) rotate(10deg);
     }
 }
 
 /* ========================================
-   Chapter 2 - Story
+   Chapter 2: Our Story
    ======================================== */
 .chapter-2 {
     background: var(--color-cream);
@@ -464,19 +470,20 @@ body {
 .story-timeline {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     width: 100%;
 }
 
 .story-card {
     background: var(--color-white);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-medium);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
     transition: all var(--transition-normal);
+    width: 100%;
 }
 
 .story-card:nth-child(even) {
@@ -490,7 +497,7 @@ body {
 
 .story-photo {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
@@ -501,8 +508,8 @@ body {
     top: -10px;
     left: 50%;
     transform: translateX(-50%) rotate(-2deg);
-    width: 80px;
-    height: 24px;
+    width: 70px;
+    height: 22px;
     background: var(--color-tape);
     opacity: 0.9;
 }
@@ -518,7 +525,7 @@ body {
 
 .story-title {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: var(--color-charcoal);
     margin-bottom: var(--spacing-xs);
@@ -526,7 +533,7 @@ body {
 
 .story-date {
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--color-rose);
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
@@ -534,13 +541,13 @@ body {
 
 .story-description {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--color-soft-gray);
     line-height: 1.7;
 }
 
 /* ========================================
-   Chapter 3 - Scrapbook
+   Chapter 3: Memory Scrapbook
    ======================================== */
 .chapter-3 {
     background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-peach) 100%);
@@ -552,30 +559,26 @@ body {
 
 .scrapbook-page {
     background: var(--color-white);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-large);
-    min-height: 450px;
+    min-height: 400px;
     position: relative;
-}
-
-@media (max-width: 480px) {
-    .scrapbook-page {
-        min-height: 400px;
-    }
+    width: 100%;
 }
 
 .polaroid {
     background: var(--color-white);
-    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-sm);
     box-shadow: var(--shadow-medium);
-    width: 150px;
+    width: 110px;
     position: absolute;
     transition: all var(--transition-normal);
     cursor: pointer;
 }
 
-.polaroid:hover {
+.polaroid:hover,
+.polaroid:active {
     transform: scale(1.05) rotate(0deg) !important;
     box-shadow: var(--shadow-large);
     z-index: 10;
@@ -583,14 +586,14 @@ body {
 
 .polaroid img {
     width: 100%;
-    height: 120px;
+    height: 85px;
     object-fit: cover;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
 }
 
 .polaroid-caption {
     font-family: var(--font-serif);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     text-align: center;
     color: var(--color-charcoal);
 }
@@ -608,7 +611,7 @@ body {
 }
 
 .polaroid-3 {
-    bottom: var(--spacing-xl);
+    bottom: var(--spacing-lg);
     left: var(--spacing-lg);
     transform: rotate(2deg);
 }
@@ -621,8 +624,8 @@ body {
 
 .sticky-note {
     background: #FFF9C4;
-    padding: var(--spacing-sm);
-    width: 100px;
+    padding: var(--spacing-xs);
+    width: 80px;
     box-shadow: var(--shadow-soft);
     position: absolute;
     transform: rotate(-2deg);
@@ -630,36 +633,37 @@ body {
 
 .sticky-note p {
     font-family: var(--font-serif);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--color-charcoal);
     text-align: center;
 }
 
 .note-1 {
-    top: 180px;
-    right: var(--spacing-xl);
+    top: 150px;
+    right: var(--spacing-lg);
     background: #C8E6C9;
 }
 
 .note-2 {
-    top: 220px;
-    left: var(--spacing-xl);
+    top: 180px;
+    left: var(--spacing-lg);
     background: #FFCCBC;
 }
 
 /* ========================================
-   Chapter 4 - Gift
+   Chapter 4: The Gift
    ======================================== */
 .chapter-4 {
     background: var(--color-cream);
 }
 
 .gift-box {
-    width: 220px;
-    height: 220px;
+    width: min(220px, 65vw);
+    height: auto;
+    aspect-ratio: 220/220;
     position: relative;
     cursor: pointer;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .gift-box.opened {
@@ -668,7 +672,7 @@ body {
 
 .gift-body {
     width: 100%;
-    height: 140px;
+    height: 70%;
     background: linear-gradient(135deg, var(--color-rose) 0%, #D4786A 100%);
     position: absolute;
     bottom: 0;
@@ -681,7 +685,7 @@ body {
 
 .gift-hint {
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--color-white);
     font-weight: 600;
 }
@@ -692,10 +696,10 @@ body {
 
 .gift-lid {
     width: 105%;
-    height: 50px;
+    height: 30%;
     background: linear-gradient(135deg, #D4786A 0%, var(--color-rose) 100%);
     position: absolute;
-    top: 30px;
+    top: 0;
     left: -2.5%;
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     transition: all var(--transition-slow);
@@ -704,7 +708,7 @@ body {
 }
 
 .gift-box.opened .gift-lid {
-    transform: rotate(-45deg) translateX(-60px) translateY(-30px);
+    transform: rotate(-45deg) translateX(-50px) translateY(-25px);
 }
 
 .gift-ribbon-v {
@@ -738,13 +742,13 @@ body {
 
 .gift-box.opened .gift-bow {
     opacity: 0;
-    transform: translateX(-50%) translateY(-40px) scale(0.5);
+    transform: translateX(-50%) translateY(-35px) scale(0.5);
 }
 
 .bow-left,
 .bow-right {
-    width: 50px;
-    height: 40px;
+    width: 45px;
+    height: 35px;
     background: var(--color-soft-pink);
     border-radius: 50%;
     position: absolute;
@@ -752,16 +756,16 @@ body {
 }
 
 .bow-left {
-    left: -50px;
+    left: -45px;
 }
 
 .bow-right {
-    right: -50px;
+    right: -45px;
 }
 
 .bow-center {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     background: var(--color-rose);
     border-radius: 50%;
     position: relative;
@@ -773,7 +777,9 @@ body {
     visibility: hidden;
     transform: translateY(20px);
     transition: all var(--transition-slow);
-    margin-top: -100px;
+    margin-top: -60px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .gift-message.visible {
@@ -784,16 +790,16 @@ body {
 
 .message-card {
     background: var(--color-white);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-large);
     text-align: center;
-    max-width: 400px;
+    width: 100%;
 }
 
 .message-preamble {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: var(--color-rose);
     margin-bottom: var(--spacing-md);
@@ -801,7 +807,7 @@ body {
 
 .message-text {
     font-family: var(--font-serif);
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--color-charcoal);
     margin-bottom: var(--spacing-lg);
@@ -809,13 +815,13 @@ body {
 
 .message-signoff {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--color-soft-gray);
 }
 
 /* ========================================
-   Chapter 5 - Final
+   Chapter 5: Forever
    ======================================== */
 .chapter-5 {
     background: linear-gradient(135deg, var(--color-peach) 0%, var(--color-soft-pink) 100%);
@@ -823,7 +829,7 @@ body {
 
 .final-card {
     background: var(--color-white);
-    padding: var(--spacing-2xl) var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-large);
     text-align: center;
@@ -833,7 +839,7 @@ body {
 
 .final-title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--color-charcoal);
     margin-bottom: var(--spacing-sm);
@@ -841,17 +847,18 @@ body {
 
 .final-names {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--color-rose);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .final-countdown {
     display: flex;
     justify-content: center;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
 }
 
 .countdown-item {
@@ -862,7 +869,7 @@ body {
 
 .countdown-number {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--color-charcoal);
     line-height: 1;
@@ -879,7 +886,7 @@ body {
 
 .final-quote {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     font-style: italic;
     color: var(--color-charcoal);
     margin-bottom: var(--spacing-lg);
@@ -889,12 +896,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .wish-card {
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     color: var(--color-soft-gray);
 }
 
@@ -904,14 +911,17 @@ body {
 .chapter-btn,
 .restart-btn {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     padding: var(--spacing-sm) var(--spacing-lg);
     border: none;
     border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    width: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .chapter-btn {
@@ -920,14 +930,11 @@ body {
     box-shadow: var(--shadow-soft);
 }
 
-.chapter-btn:hover {
-    background: #D4786A;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-}
-
+.chapter-btn:hover,
 .chapter-btn:active {
-    transform: translateY(0);
+    background: #D4786A;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
 }
 
 .restart-btn {
@@ -936,7 +943,8 @@ body {
     border: 2px solid var(--color-soft-pink);
 }
 
-.restart-btn:hover {
+.restart-btn:hover,
+.restart-btn:active {
     background: var(--color-soft-pink);
     color: var(--color-charcoal);
 }
@@ -951,139 +959,62 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: var(--z-canvas);
 }
 
 /* ========================================
-   Responsive Styles (Mobile-First!)
+   Responsive Styles
    ======================================== */
-@media (max-width: 480px) {
-    .chapter-content {
-        padding: var(--spacing-md);
-        padding-top: 6rem;
-        padding-bottom: 6rem;
-    }
-    
-    .chapter-title {
-        font-size: 2rem;
-    }
-    
-    .invitation-envelope {
-        width: 220px;
-        height: 160px;
-    }
-    
-    .invitation-card,
-    .message-card,
-    .final-card {
-        padding: var(--spacing-lg);
-    }
-    
-    .couple-names {
-        font-size: 1.6rem;
-    }
-    
-    .polaroid {
-        width: 120px;
-    }
-    
-    .polaroid img {
-        height: 90px;
-    }
-    
-    .polaroid-1 {
-        top: var(--spacing-sm);
-        left: var(--spacing-sm);
-    }
-    
-    .polaroid-2 {
-        top: var(--spacing-sm);
-        right: var(--spacing-sm);
-    }
-    
-    .polaroid-3 {
-        bottom: var(--spacing-lg);
-        left: var(--spacing-md);
-    }
-    
-    .polaroid-4 {
-        bottom: var(--spacing-lg);
-        right: var(--spacing-md);
-    }
-    
-    .sticky-note {
-        width: 80px;
-        padding: var(--spacing-xs);
-    }
-    
-    .note-1 {
-        top: 140px;
-        right: var(--spacing-lg);
-    }
-    
-    .note-2 {
-        top: 170px;
-        left: var(--spacing-lg);
-    }
-    
-    .gift-box {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .final-title {
-        font-size: 2rem;
-    }
-    
-    .final-names {
-        font-size: 1.6rem;
-    }
-    
-    .countdown-number {
-        font-size: 1.8rem;
-    }
-    
-    .final-countdown {
-        gap: var(--spacing-sm);
-    }
-    
-    .music-player {
-        left: var(--spacing-sm);
-        bottom: var(--spacing-sm);
-        padding: var(--spacing-xs);
-    }
-    
-    .surprise-btn {
-        right: var(--spacing-sm);
-        bottom: var(--spacing-sm);
-        width: 48px;
-        height: 48px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) {
     .chapter-content {
         padding: var(--spacing-lg);
     }
     
     .invitation-envelope {
         width: 260px;
-        height: 190px;
+    }
+    
+    .chapter-title {
+        font-size: 2.5rem;
+    }
+    
+    .couple-names {
+        font-size: 2rem;
     }
     
     .polaroid {
-        width: 140px;
+        width: 130px;
     }
     
     .polaroid img {
-        height: 110px;
+        height: 100px;
+    }
+    
+    .sticky-note {
+        width: 90px;
+    }
+    
+    .gift-box {
+        width: 220px;
+    }
+    
+    .final-title {
+        font-size: 2.5rem;
+    }
+    
+    .final-names {
+        font-size: 2rem;
+    }
+    
+    .countdown-number {
+        font-size: 2.5rem;
     }
 }
 
 @media (min-width: 768px) {
-    .chapter-title {
-        font-size: 3rem;
+    .chapter {
+        padding-top: 5rem;
+        padding-bottom: 6rem;
     }
     
     .story-card {
@@ -1100,27 +1031,35 @@ body {
         width: 50%;
     }
     
+    .story-photo {
+        height: 200px;
+    }
+    
     .story-text {
         width: 50%;
     }
     
     .polaroid {
-        width: 180px;
+        width: 150px;
     }
     
     .polaroid img {
-        height: 150px;
+        height: 120px;
+    }
+    
+    .scrapbook-page {
+        min-height: 450px;
     }
 }
 
 @media (min-width: 1024px) {
     .chapter-content {
-        padding: var(--spacing-2xl);
+        padding: var(--spacing-xl);
     }
     
     .invitation-card,
     .message-card,
     .final-card {
-        max-width: 500px;
+        max-width: 450px;
     }
 }
