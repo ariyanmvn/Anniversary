@@ -662,6 +662,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all var(--transition-slow);
+}
+
+.cake-cut.cake-container {
+    margin-bottom: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .cake {
