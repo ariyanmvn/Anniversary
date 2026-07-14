@@ -662,7 +662,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 350px; /* Make space for cake and message */
 }
 
 .cake {
@@ -1042,15 +1041,13 @@ body {
 }
 
 .gift-message {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: none;
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
     width: 100%;
     max-width: 400px;
+    margin-top: var(--spacing-lg);
 }
 
 .gift-message.visible {
