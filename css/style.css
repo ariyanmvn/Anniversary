@@ -1017,6 +1017,29 @@ body {
     transition: all var(--transition-slow);
 }
 
+.cake-cut .cake {
+    animation: cakeCut 0.8s ease-out forwards;
+}
+
+@keyframes cakeCut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
 .cake-cut .cake-hint {
     opacity: 0;
 }

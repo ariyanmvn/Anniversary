@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         setTimeout(() => {
             giftMessage.classList.add('visible');
-        }, 600);
+        }, 900); // Wait for cake to almost disappear
         
         setTimeout(() => {
             finalChapterBtn.style.display = 'inline-block';
-        }, 1000);
+        }, 1300);
     });
     
     function launchBalloons() {
