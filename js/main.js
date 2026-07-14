@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const blowBtn = document.getElementById('blowBtn');
     const cakeHint = document.getElementById('cakeHint');
     const flames = document.querySelectorAll('.flame');
+    const smokes = document.querySelectorAll('.smoke');
     let candlesBlown = false;
     
     function resetChapter4() {
@@ -108,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cakeHint.style.display = 'none';
         candlesBlown = false;
         flames.forEach(flame => flame.classList.remove('blown'));
+        smokes.forEach(smoke => smoke.classList.remove('active'));
     }
     
     blowBtn.addEventListener('click', () => {
@@ -117,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         flames.forEach((flame, index) => {
             setTimeout(() => {
                 flame.classList.add('blown');
+                smokes[index].classList.add('active');
             }, index * 100);
         });
         
