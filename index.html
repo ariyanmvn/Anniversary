@@ -3,450 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerin & Shihab | 2nd Anniversary</title>
+    <title>❤️ Jerin & Shihab - 2nd Anniversary</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="scroll-progress"></div>
-    <div class="background-effects">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="particles" id="particles"></div>
-    </div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#home" class="logo">JS ❤️</a>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#story" class="nav-link">Story</a></li>
-                <li><a href="#memories" class="nav-link">Memories</a></li>
-                <li><a href="#timeline" class="nav-link">Timeline</a></li>
-                <li><a href="#reasons" class="nav-link">Reasons</a></li>
-                <li><a href="#letter" class="nav-link">Letter</a></li>
-                <li><a href="#wishes" class="nav-link">Wishes</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-dots">
+            <div class="progress-dot active" data-chapter="1"></div>
+            <div class="progress-dot" data-chapter="2"></div>
+            <div class="progress-dot" data-chapter="3"></div>
+            <div class="progress-dot" data-chapter="4"></div>
+            <div class="progress-dot" data-chapter="5"></div>
         </div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-nav-links">
-            <li><a href="#home" class="mobile-nav-link active">Home</a></li>
-            <li><a href="#story" class="mobile-nav-link">Story</a></li>
-            <li><a href="#memories" class="mobile-nav-link">Memories</a></li>
-            <li><a href="#timeline" class="mobile-nav-link">Timeline</a></li>
-            <li><a href="#reasons" class="mobile-nav-link">Reasons</a></li>
-            <li><a href="#letter" class="mobile-nav-link">Letter</a></li>
-            <li><a href="#wishes" class="mobile-nav-link">Wishes</a></li>
-        </ul>
+        <div class="progress-text">Chapter 1 of 5</div>
     </div>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-card glass-card">
-                <p class="hero-subtitle animate-text" style="--delay: 0.1s">Celebrating</p>
-                <h1 class="hero-title animate-text" style="--delay: 0.3s">Happy 2nd Anniversary ❤️</h1>
-                <h2 class="hero-names animate-text" style="--delay: 0.5s">Jerin & Shihab</h2>
-                <p class="hero-message animate-text" style="--delay: 0.7s">
-                    Two amazing years, countless memories, endless laughter, and a lifetime still waiting.
-                </p>
-                <a href="#story" class="hero-btn animate-text" style="--delay: 0.9s">Begin Our Journey</a>
+    <!-- Floating Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="disc-container">
+            <div class="disc" id="disc">
+                <div class="disc-hole"></div>
             </div>
         </div>
-    </section>
-
-    <section class="section story-section" id="story">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Our Story</h2>
-            <div class="story-container">
-                <div class="story-card animate-on-scroll" style="--index: 0">
-                    <div class="story-card-content glass-card">
-                        <h3>Once Upon a Time...</h3>
-                        <p>It all started with a simple "hello" that changed everything. Two souls, not knowing their lives were about to become the most beautiful journey together.</p>
-                    </div>
-                </div>
-                <div class="story-card animate-on-scroll" style="--index: 1">
-                    <div class="story-card-content glass-card">
-                        <h3>The Connection Grew</h3>
-                        <p>Late-night talks, shared dreams, and endless laughter. Every moment spent together felt like magic in the making.</p>
-                    </div>
-                </div>
-                <div class="story-card animate-on-scroll" style="--index: 2">
-                    <div class="story-card-content glass-card">
-                        <h3>Here We Are</h3>
-                        <p>Two years of love, growth, and beautiful memories. And this is just the beginning of our forever story.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="music-controls">
+            <button class="music-btn" id="playBtn">▶</button>
+            <button class="music-btn" id="volBtn">🔊</button>
         </div>
-    </section>
+    </div>
 
-    <section class="section timeline-section" id="timeline">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Love Timeline</h2>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll" style="--index: 0">
-                    <div class="timeline-icon">❤️</div>
-                    <div class="timeline-content glass-card">
-                        <h3>First Meeting</h3>
-                        <p class="timeline-date">A day we'll never forget</p>
-                        <p>The moment our eyes met, something special began.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 1">
-                    <div class="timeline-icon">💬</div>
-                    <div class="timeline-content glass-card">
-                        <h3>First Conversation</h3>
-                        <p class="timeline-date">Hours felt like minutes</p>
-                        <p>Talking about everything and nothing, the connection was instant.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 2">
-                    <div class="timeline-icon">📸</div>
-                    <div class="timeline-content glass-card">
-                        <h3>First Picture Together</h3>
-                        <p class="timeline-date">Capturing the moment</p>
-                        <p>A photo that would be the first of thousands more.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 3">
-                    <div class="timeline-icon">🎂</div>
-                    <div class="timeline-content glass-card">
-                        <h3>First Birthday Together</h3>
-                        <p class="timeline-date">Making celebrations special</p>
-                        <p>Another milestone in our beautiful journey.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 4">
-                    <div class="timeline-icon">✈️</div>
-                    <div class="timeline-content glass-card">
-                        <h3>Trips & Adventures</h3>
-                        <p class="timeline-date">Exploring the world together</p>
-                        <p>Creating memories in places near and far.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 5">
-                    <div class="timeline-icon">😂</div>
-                    <div class="timeline-content glass-card">
-                        <h3>Funny Moments</h3>
-                        <p class="timeline-date">Laughter that echoes forever</p>
-                        <p>Inside jokes and silly moments we'll cherish always.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll" style="--index: 6">
-                    <div class="timeline-icon">💍</div>
-                    <div class="timeline-content glass-card">
-                        <h3>Second Anniversary</h3>
-                        <p class="timeline-date">18 July</p>
-                        <p>Two amazing years down, forever to go! ❤️</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section countdown-section" id="countdown">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Countdown to Forever</h2>
-            <div class="countdown-container animate-on-scroll" id="countdownContainer">
-                <div class="countdown-item glass-card">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item glass-card">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item glass-card">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item glass-card">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
-            </div>
-            <div class="anniversary-message" id="anniversaryMessage" style="display: none;">
-                <h2 class="animate-text">Happy Anniversary ❤️</h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="section memories-section" id="memories">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Our Memories</h2>
-            <div class="masonry-grid">
-                <div class="masonry-item animate-on-scroll" data-index="0">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory1.jpg" alt="Memory 1" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Beautiful Memory</h4>
-                            <p>A moment we'll treasure</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="masonry-item animate-on-scroll" data-index="1">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory2.jpg" alt="Memory 2" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Together Forever</h4>
-                            <p>Love in every frame</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="masonry-item animate-on-scroll" data-index="2">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory3.jpg" alt="Memory 3" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Adventure Time</h4>
-                            <p>Exploring together</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="masonry-item animate-on-scroll" data-index="3">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory4.jpg" alt="Memory 4" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Happy Moments</h4>
-                            <p>Laughter is the best</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="masonry-item animate-on-scroll" data-index="4">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory5.jpg" alt="Memory 5" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Special Days</h4>
-                            <p>Celebrating us</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="masonry-item animate-on-scroll" data-index="5">
-                    <div class="masonry-card glass-card">
-                        <img src="assets/images/memory6.jpg" alt="Memory 6" loading="lazy">
-                        <div class="masonry-overlay">
-                            <h4>Our Story</h4>
-                            <p>Every chapter is beautiful</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section reasons-section" id="reasons">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Reasons Why We Love You</h2>
-            <div class="reasons-grid">
-                <div class="reason-card animate-on-scroll">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>❤️</h3>
-                            <p>Reason #1</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>Your smile brightens even the darkest days.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card animate-on-scroll" style="--delay: 0.1s">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>💕</h3>
-                            <p>Reason #2</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>Your kindness knows no bounds.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card animate-on-scroll" style="--delay: 0.2s">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>💖</h3>
-                            <p>Reason #3</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>The way you look at me makes me feel special.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card animate-on-scroll" style="--delay: 0.3s">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>💗</h3>
-                            <p>Reason #4</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>You make every ordinary moment extraordinary.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card animate-on-scroll" style="--delay: 0.4s">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>💝</h3>
-                            <p>Reason #5</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>Your love makes me a better person.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card animate-on-scroll" style="--delay: 0.5s">
-                    <div class="reason-card-inner">
-                        <div class="reason-card-front glass-card">
-                            <h3>💓</h3>
-                            <p>Reason #6</p>
-                        </div>
-                        <div class="reason-card-back glass-card">
-                            <p>You're my best friend and soulmate.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section letter-section" id="letter">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">A Letter to You</h2>
-            <div class="letter-container animate-on-scroll">
-                <div class="envelope" id="envelope">
-                    <div class="envelope-flap"></div>
-                    <div class="envelope-body">
-                        <span class="envelope-heart">❤️</span>
-                    </div>
-                </div>
-                <div class="letter-paper glass-card" id="letterPaper">
-                    <div class="letter-content">
-                        <p class="typewriter" id="typewriter"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section friendship-section" id="friendship">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Our Favorite Moments Together</h2>
-            <div class="friendship-grid">
-                <div class="friendship-card glass-card animate-on-scroll">
-                    <img src="assets/images/group1.jpg" alt="Group Memory" loading="lazy">
-                    <div class="friendship-overlay">
-                        <h4>Group Celebrations</h4>
-                        <p>Fun times with friends</p>
-                    </div>
-                </div>
-                <div class="friendship-card glass-card animate-on-scroll" style="--delay: 0.1s">
-                    <img src="assets/images/group2.jpg" alt="Trip Memory" loading="lazy">
-                    <div class="friendship-overlay">
-                        <h4>Trip Adventures</h4>
-                        <p>Exploring with loved ones</p>
-                    </div>
-                </div>
-                <div class="friendship-card glass-card animate-on-scroll" style="--delay: 0.2s">
-                    <img src="assets/images/group3.jpg" alt="Funny Moment" loading="lazy">
-                    <div class="friendship-overlay">
-                        <h4>Funny Memories</h4>
-                        <p>Laughing together</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section wishes-section" id="wishes">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Wishes & Messages</h2>
-            <div class="wishes-grid">
-                <div class="wish-card glass-card animate-on-scroll">
-                    <div class="wish-bubble">
-                        <p>Happy Anniversary! You two are perfect for each other! 🎉</p>
-                    </div>
-                    <p class="wish-author">- A Friend</p>
-                </div>
-                <div class="wish-card glass-card animate-on-scroll" style="--delay: 0.1s">
-                    <div class="wish-bubble">
-                        <p>Wishing you both a lifetime of love and happiness! ❤️</p>
-                    </div>
-                    <p class="wish-author">- Family</p>
-                </div>
-                <div class="wish-card glass-card animate-on-scroll" style="--delay: 0.2s">
-                    <div class="wish-bubble">
-                        <p>Two years of pure magic! Here's to many more! ✨</p>
-                    </div>
-                    <p class="wish-author">- Loved One</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section funfacts-section" id="funfacts">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Fun Facts</h2>
-            <div class="funfacts-grid">
-                <div class="funfact-card glass-card animate-on-scroll">
-                    <div class="funfact-number" data-target="2">0</div>
-                    <div class="funfact-label">Years Together</div>
-                </div>
-                <div class="funfact-card glass-card animate-on-scroll" style="--delay: 0.1s">
-                    <div class="funfact-number" data-target="999">0</div>
-                    <div class="funfact-label">Photos Taken</div>
-                </div>
-                <div class="funfact-card glass-card animate-on-scroll" style="--delay: 0.2s">
-                    <div class="funfact-number" data-target="1000">0</div>
-                    <div class="funfact-label">Laughs Shared</div>
-                </div>
-                <div class="funfact-card glass-card animate-on-scroll" style="--delay: 0.3s">
-                    <div class="funfact-number" data-target="500">0</div>
-                    <div class="funfact-label">Late Night Calls</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Made with ❤️</p>
-            <p class="footer-subtext">Here's to many more years of love, laughter, and unforgettable memories.</p>
-        </div>
-    </footer>
-
+    <!-- Surprise Button -->
     <button class="surprise-btn" id="surpriseBtn">
-        <span>❤️</span>
+        <span>✨</span>
     </button>
 
-    <div class="music-player glass-card" id="musicPlayer">
-        <div class="player-disc" id="playerDisc"></div>
-        <div class="player-controls">
-            <button class="player-btn" id="playBtn">▶️</button>
-            <div class="player-progress">
-                <div class="player-progress-bar" id="progressBar"></div>
+    <!-- Chapter 1: The Invitation (Hero) -->
+    <section class="chapter chapter-1 active" id="chapter1">
+        <div class="chapter-content">
+            <div class="invitation-envelope" id="invitationEnvelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal">
+                    <span class="seal-heart">❤️</span>
+                </div>
+                <div class="envelope-body">
+                    <p class="envelope-text">Open Me</p>
+                </div>
             </div>
-            <button class="player-btn" id="volumeBtn">🔊</button>
+            
+            <div class="invitation-content" id="invitationContent">
+                <div class="invitation-card">
+                    <p class="invitation-preamble">You're invited to celebrate</p>
+                    <h1 class="chapter-title">Happy 2nd Anniversary</h1>
+                    <h2 class="couple-names">Jerin & Shihab</h2>
+                    <p class="invitation-date">July 18, 2024</p>
+                    <p class="invitation-quote">"Two amazing years, countless memories, endless laughter, and a lifetime still waiting."</p>
+                    <button class="chapter-btn" data-next="chapter2">
+                        Begin Our Journey →
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
+        
+        <div class="floating-elements">
+            <span class="floating-heart" style="top:10%; left:10%; animation-delay:0s;">❤️</span>
+            <span class="floating-heart" style="top:20%; right:15%; animation-delay:2s;">💕</span>
+            <span class="floating-heart" style="top:60%; left:20%; animation-delay:4s;">💗</span>
+            <span class="floating-star" style="top:40%; right:10%; animation-delay:1s;">✨</span>
+            <span class="floating-star" style="top:70%; right:25%; animation-delay:3s;">⭐</span>
+        </div>
+    </section>
 
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">×</button>
-            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
-            <img src="" alt="Lightbox Image" id="lightboxImage">
-            <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
-            <div class="lightbox-caption" id="lightboxCaption"></div>
+    <!-- Chapter 2: Our Story -->
+    <section class="chapter chapter-2" id="chapter2">
+        <div class="chapter-header">
+            <p class="chapter-number">Chapter 2</p>
+            <h2 class="chapter-title">Our Story</h2>
         </div>
-    </div>
+        
+        <div class="chapter-content">
+            <div class="story-timeline">
+                <div class="story-card" data-memory="first-meeting">
+                    <div class="story-photo-container">
+                        <img src="assets/images/story1.jpg" alt="First Meeting" class="story-photo">
+                        <div class="photo-tape"></div>
+                    </div>
+                    <div class="story-text">
+                        <h3 class="story-title">❤️ First Meeting</h3>
+                        <p class="story-date">July 18, 2022</p>
+                        <p class="story-description">The day our lives changed forever. That first glance, that first smile... we knew something special was beginning.</p>
+                    </div>
+                </div>
+                
+                <div class="story-card" data-memory="first-convo">
+                    <div class="story-text">
+                        <h3 class="story-title">💬 First Conversation</h3>
+                        <p class="story-date">July 20, 2022</p>
+                        <p class="story-description">Hours flew by like minutes. Talking about everything and nothing, feeling like we'd known each other forever.</p>
+                    </div>
+                    <div class="story-photo-container">
+                        <img src="assets/images/story2.jpg" alt="First Conversation" class="story-photo">
+                        <div class="photo-tape tape-alt"></div>
+                    </div>
+                </div>
+                
+                <div class="story-card" data-memory="first-pic">
+                    <div class="story-photo-container">
+                        <img src="assets/images/story3.jpg" alt="First Picture" class="story-photo">
+                        <div class="photo-tape"></div>
+                    </div>
+                    <div class="story-text">
+                        <h3 class="story-title">📸 First Picture Together</h3>
+                        <p class="story-date">August 5, 2022</p>
+                        <p class="story-description">The first of many memories captured. Look at how happy we were! Little did we know what was to come...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="chapter-btn" data-next="chapter3">
+                Continue →
+            </button>
+        </div>
+    </section>
+
+    <!-- Chapter 3: Memory Scrapbook -->
+    <section class="chapter chapter-3" id="chapter3">
+        <div class="chapter-header">
+            <p class="chapter-number">Chapter 3</p>
+            <h2 class="chapter-title">Memory Scrapbook</h2>
+        </div>
+        
+        <div class="chapter-content">
+            <div class="scrapbook">
+                <div class="scrapbook-page">
+                    <div class="polaroid polaroid-1">
+                        <img src="assets/images/memory1.jpg" alt="Memory 1">
+                        <p class="polaroid-caption">Our first trip ✈️</p>
+                    </div>
+                    
+                    <div class="polaroid polaroid-2">
+                        <img src="assets/images/memory2.jpg" alt="Memory 2">
+                        <p class="polaroid-caption">Birthday surprise! 🎂</p>
+                    </div>
+                    
+                    <div class="sticky-note note-1">
+                        <p>Best day ever! 💕</p>
+                    </div>
+                    
+                    <div class="polaroid polaroid-3">
+                        <img src="assets/images/memory3.jpg" alt="Memory 3">
+                        <p class="polaroid-caption">Coffee dates ☕</p>
+                    </div>
+                    
+                    <div class="sticky-note note-2">
+                        <p>I love you!</p>
+                    </div>
+                    
+                    <div class="polaroid polaroid-4">
+                        <img src="assets/images/memory4.jpg" alt="Memory 4">
+                        <p class="polaroid-caption">Late night talks 🌙</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="chapter-btn" data-next="chapter4">
+                More Memories →
+            </button>
+        </div>
+    </section>
+
+    <!-- Chapter 4: The Gift -->
+    <section class="chapter chapter-4" id="chapter4">
+        <div class="chapter-header">
+            <p class="chapter-number">Chapter 4</p>
+            <h2 class="chapter-title">A Special Gift</h2>
+        </div>
+        
+        <div class="chapter-content">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid"></div>
+                <div class="gift-ribbon-v"></div>
+                <div class="gift-ribbon-h"></div>
+                <div class="gift-bow">
+                    <div class="bow-left"></div>
+                    <div class="bow-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+                <div class="gift-body">
+                    <p class="gift-hint">Tap to Open</p>
+                </div>
+            </div>
+            
+            <div class="gift-message" id="giftMessage">
+                <div class="message-card">
+                    <p class="message-preamble">To my love,</p>
+                    <p class="message-text">
+                        Two years ago, I met the person who makes every day brighter, 
+                        every laugh louder, and every moment more meaningful. 
+                        Thank you for being my best friend, my partner, and my everything. 
+                        Here's to countless more anniversaries together!
+                    </p>
+                    <p class="message-signoff">Forever yours,<br>❤️</p>
+                </div>
+            </div>
+            
+            <button class="chapter-btn" data-next="chapter5" id="finalChapterBtn" style="display: none;">
+                The Final Chapter →
+            </button>
+        </div>
+    </section>
+
+    <!-- Chapter 5: Forever -->
+    <section class="chapter chapter-5" id="chapter5">
+        <div class="chapter-content">
+            <div class="final-card">
+                <h1 class="final-title">Happy 2nd Anniversary</h1>
+                <h2 class="final-names">Jerin & Shihab</h2>
+                <div class="final-countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">--</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">--</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">--</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">--</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <p class="final-quote">"Grow old with me, the best is yet to be."</p>
+                <div class="final-wishes">
+                    <p class="wish-card">Made with ❤️ just for you</p>
+                    <p class="wish-card">Here's to many more years of love, laughter, and unforgettable memories</p>
+                </div>
+                <button class="restart-btn" id="restartBtn">
+                    ← Start Over
+                </button>
+            </div>
+        </div>
+        
+        <div class="floating-elements final-floating">
+            <span class="floating-heart" style="top:10%; left:5%; animation-delay:0s;">❤️</span>
+            <span class="floating-heart" style="top:15%; right:10%; animation-delay:1.5s;">💕</span>
+            <span class="floating-heart" style="top:30%; left:15%; animation-delay:0.8s;">💗</span>
+            <span class="floating-star" style="top:50%; right:5%; animation-delay:2.2s;">✨</span>
+            <span class="floating-star" style="top:70%; left:8%; animation-delay:3s;">⭐</span>
+            <span class="floating-heart" style="top:80%; right:20%; animation-delay:1s;">💖</span>
+        </div>
+    </section>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
 
     <script src="js/main.js"></script>
 </body>

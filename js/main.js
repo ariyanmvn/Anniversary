@@ -1,308 +1,175 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initParticles();
-    initCustomCursor();
-    initNavbar();
-    initMobileMenu();
-    initScrollAnimations();
-    initCountdown();
-    initLetter();
-    initLightbox();
-    initMusicPlayer();
-    initSurpriseButton();
-    initCounters();
-});
-
-// Particles Effect
-function initParticles() {
-    const container = document.getElementById('particles');
-    if (!container) return;
+    // ========================================
+    // CHAPTER NAVIGATION
+    // ========================================
+    let currentChapter = 1;
+    const totalChapters = 5;
     
-    const colors = ['#D88C7A', '#E8A698', '#F2C4B9'];
-    const particleCount = 20;
+    const progressDots = document.querySelectorAll('.progress-dot');
+    const progressText = document.querySelector('.progress-text');
+    const chapterBtns = document.querySelectorAll('.chapter-btn');
+    const restartBtn = document.getElementById('restartBtn');
     
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.opacity = (Math.random() * 0.4 + 0.1).toString();
-        particle.style.width = (Math.random() * 6 + 3) + 'px';
-        particle.style.height = particle.style.width;
-        
-        animateParticle(particle);
-        container.appendChild(particle);
-    }
-}
-
-function animateParticle(particle) {
-    const duration = Math.random() * 25 + 20;
-    const delay = Math.random() * 10;
-    const x = (Math.random() - 0.5) * 150;
-    const y = (Math.random() - 0.5) * 150;
-    
-    particle.animate([
-        { transform: 'translate(0, 0)' },
-        { transform: `translate(${x}px, ${y}px)` }
-    ], {
-        duration: duration * 1000,
-        delay: delay * 1000,
-        iterations: Infinity,
-        direction: 'alternate',
-        easing: 'ease-in-out'
-    });
-}
-
-// Custom Cursor
-function initCustomCursor() {
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    
-    if (!cursorDot || !cursorOutline || window.innerWidth <= 768) return;
-    
-    let mouseX = 0, mouseY = 0;
-    let outlineX = 0, outlineY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-    });
-    
-    const animate = () => {
-        outlineX += (mouseX - outlineX) * 0.15;
-        outlineY += (mouseY - outlineY) * 0.15;
-        cursorOutline.style.left = `${outlineX}px`;
-        cursorOutline.style.top = `${outlineY}px`;
-        requestAnimationFrame(animate);
-    };
-    animate();
-}
-
-// Navbar
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
-    
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-        updateActiveSection(sections, navLinks);
-        updateScrollProgress();
-    });
-}
-
-function updateActiveSection(sections, links) {
-    const scrollY = window.scrollY;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 250;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            links.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-            });
-        }
-    });
-}
-
-function updateScrollProgress() {
-    const progress = document.querySelector('.scroll-progress');
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progress.style.width = `${scrollPercent}%`;
-}
-
-// Mobile Menu
-function initMobileMenu() {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-    
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
-    
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        });
-    });
-}
-
-// Scroll Animations
-function initScrollAnimations() {
-    const elements = document.querySelectorAll('.animate-on-scroll, .story-card, .timeline-item, .masonry-item');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    function updateProgress(chapter) {
+        progressDots.forEach((dot, index) => {
+            if (index < chapter) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px'
+        progressText.textContent = `Chapter ${chapter} of ${totalChapters}`;
+    }
+    
+    function goToChapter(chapterNum) {
+        if (chapterNum < 1 || chapterNum > totalChapters) return;
+        
+        const currentChapterEl = document.getElementById(`chapter${currentChapter}`);
+        const nextChapterEl = document.getElementById(`chapter${chapterNum}`);
+        
+        if (currentChapterEl) {
+            currentChapterEl.classList.remove('active');
+        }
+        
+        if (nextChapterEl) {
+            setTimeout(() => {
+                nextChapterEl.classList.add('active');
+            }, 100);
+        }
+        
+        currentChapter = chapterNum;
+        updateProgress(chapterNum);
+    }
+    
+    chapterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const nextChapterId = btn.dataset.next;
+            const nextChapterNum = parseInt(nextChapterId.replace('chapter', ''));
+            goToChapter(nextChapterNum);
+        });
     });
     
-    elements.forEach(el => observer.observe(el));
-}
-
-// Countdown
-function initCountdown() {
-    const countdownContainer = document.getElementById('countdownContainer');
-    const anniversaryMessage = document.getElementById('anniversaryMessage');
+    restartBtn.addEventListener('click', () => {
+        goToChapter(1);
+        resetChapter1();
+        resetChapter4();
+    });
+    
+    progressDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToChapter(index + 1);
+        });
+    });
+    
+    // ========================================
+    // CHAPTER 1 - INVITATION ENVELOPE
+    // ========================================
+    const invitationEnvelope = document.getElementById('invitationEnvelope');
+    const invitationContent = document.getElementById('invitationContent');
+    
+    function resetChapter1() {
+        invitationEnvelope.classList.remove('opened');
+        invitationContent.classList.remove('visible');
+    }
+    
+    invitationEnvelope.addEventListener('click', () => {
+        if (invitationEnvelope.classList.contains('opened')) return;
+        
+        invitationEnvelope.classList.add('opened');
+        
+        setTimeout(() => {
+            invitationContent.classList.add('visible');
+        }, 400);
+    });
+    
+    // ========================================
+    // CHAPTER 4 - GIFT BOX
+    // ========================================
+    const giftBox = document.getElementById('giftBox');
+    const giftMessage = document.getElementById('giftMessage');
+    const finalChapterBtn = document.getElementById('finalChapterBtn');
+    
+    function resetChapter4() {
+        giftBox.classList.remove('opened');
+        giftMessage.classList.remove('visible');
+        finalChapterBtn.style.display = 'none';
+    }
+    
+    giftBox.addEventListener('click', () => {
+        if (giftBox.classList.contains('opened')) return;
+        
+        giftBox.classList.add('opened');
+        launchConfetti();
+        
+        setTimeout(() => {
+            giftMessage.classList.add('visible');
+        }, 600);
+        
+        setTimeout(() => {
+            finalChapterBtn.style.display = 'inline-block';
+        }, 1000);
+    });
+    
+    // ========================================
+    // COUNTDOWN
+    // ========================================
+    const countdownEl = document.getElementById('countdown');
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
     
-    const anniversary = new Date(new Date().getFullYear(), 6, 18);
+    // Set target date to July 18 of current year
+    const now = new Date();
+    let targetYear = now.getFullYear();
+    const targetDate = new Date(targetYear, 6, 18); // Month is 0-indexed
+    
+    // If July 18 has already passed this year, set for next year
+    if (now > targetDate) {
+        targetYear++;
+        targetDate.setFullYear(targetYear);
+    }
     
     function updateCountdown() {
         const now = new Date();
-        let diff = anniversary - now;
+        const diff = targetDate - now;
         
         if (diff <= 0) {
-            countdownContainer.style.display = 'none';
-            anniversaryMessage.style.display = 'block';
-            launchConfetti();
+            // Countdown complete
+            daysEl.textContent = '0';
+            hoursEl.textContent = '0';
+            minutesEl.textContent = '0';
+            secondsEl.textContent = '0';
             return;
         }
         
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        diff -= days * (1000 * 60 * 60 * 24);
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        diff -= hours * (1000 * 60 * 60);
-        
-        const minutes = Math.floor(diff / (1000 * 60));
-        diff -= minutes * (1000 * 60);
-        
-        const seconds = Math.floor(diff / 1000);
-        
-        daysEl.textContent = String(days).padStart(2, '0');
-        hoursEl.textContent = String(hours).padStart(2, '0');
-        minutesEl.textContent = String(minutes).padStart(2, '0');
-        secondsEl.textContent = String(seconds).padStart(2, '0');
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = minutes;
+        secondsEl.textContent = seconds;
     }
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
-}
-
-// Letter Animation
-function initLetter() {
-    const envelope = document.getElementById('envelope');
-    const letterPaper = document.getElementById('letterPaper');
-    const typewriterEl = document.getElementById('typewriter');
     
-    const letterText = "Dearest Jerin & Shihab,\n\nHappy 2nd Anniversary! 🎉\n\nTwo years ago, your beautiful journey began, and every moment since has been filled with love, laughter, and unforgettable memories.\n\nHere's to many more years of adventure, happiness, and growing old together.\n\nWith all our love,\n\nYour Friends";
-    
-    let isOpened = false;
-    
-    envelope.addEventListener('click', () => {
-        if (isOpened) return;
-        isOpened = true;
-        
-        envelope.classList.add('open');
-        
-        setTimeout(() => {
-            letterPaper.classList.add('open');
-            setTimeout(() => {
-                typeWriter(typewriterEl, letterText, 0);
-            }, 300);
-        }, 600);
-    });
-}
-
-function typeWriter(element, text, index) {
-    if (index <= text.length) {
-        element.textContent = text.substring(0, index);
-        setTimeout(() => typeWriter(element, text, index + 1), 35);
-    }
-}
-
-// Lightbox
-function initLightbox() {
-    const masonryCards = document.querySelectorAll('.masonry-card');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImage');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const closeBtn = document.getElementById('lightboxClose');
-    const prevBtn = document.getElementById('lightboxPrev');
-    const nextBtn = document.getElementById('lightboxNext');
-    
-    let currentIndex = 0;
-    const images = Array.from(masonryCards).map(card => ({
-        src: card.querySelector('img').src,
-        title: card.querySelector('h4').textContent,
-        description: card.querySelector('p').textContent
-    }));
-    
-    masonryCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            currentIndex = index;
-            openLightbox(images[index]);
-        });
-    });
-    
-    function openLightbox(imageData) {
-        lightboxImg.src = imageData.src;
-        lightboxCaption.innerHTML = `<h4>${imageData.title}</h4><p>${imageData.description}</p>`;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        openLightbox(images[currentIndex]);
-    }
-    
-    function showNext() {
-        currentIndex = (currentIndex + 1) % images.length;
-        openLightbox(images[currentIndex]);
-    }
-    
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
-    
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-    
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
-    });
-}
-
-// Music Player
-function initMusicPlayer() {
-    const playBtn = document.getElementById('playBtn');
-    const volumeBtn = document.getElementById('volumeBtn');
-    const disc = document.getElementById('playerDisc');
-    const progressBar = document.getElementById('progressBar');
-    
-    // Create audio element - using your music file
+    // ========================================
+    // MUSIC PLAYER
+    // ========================================
     const audio = new Audio('music.mp3');
     audio.loop = true;
+    audio.volume = 0.7;
+    
+    const playBtn = document.getElementById('playBtn');
+    const volBtn = document.getElementById('volBtn');
+    const disc = document.getElementById('disc');
     
     let isPlaying = false;
+    let isMuted = false;
     
     // Try to autoplay when page loads
     (async () => {
@@ -312,11 +179,11 @@ function initMusicPlayer() {
             playBtn.textContent = '⏸';
             disc.classList.add('spinning');
         } catch (error) {
-            console.log('Autoplay blocked - will start on first user click');
+            console.log('Autoplay blocked - user interaction required');
         }
     })();
     
-    // Start music on first user click (for browsers that block autoplay)
+    // Start music on first user click
     const startMusicOnFirstClick = async () => {
         if (!isPlaying) {
             try {
@@ -325,7 +192,7 @@ function initMusicPlayer() {
                 playBtn.textContent = '⏸';
                 disc.classList.add('spinning');
             } catch (error) {
-                console.log('Error starting music:', error);
+                console.log('Error playing music:', error);
             }
         }
         document.removeEventListener('click', startMusicOnFirstClick);
@@ -335,155 +202,144 @@ function initMusicPlayer() {
     document.addEventListener('click', startMusicOnFirstClick);
     document.addEventListener('touchstart', startMusicOnFirstClick);
     
-    // Update progress bar
-    audio.addEventListener('timeupdate', () => {
-        if (audio.duration) {
-            const progressPercent = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-        }
-    });
-    
-    // Play/Pause button
-    playBtn.addEventListener('click', async () => {
-        if (!isPlaying) {
+    playBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        
+        if (isPlaying) {
+            audio.pause();
+            playBtn.textContent = '▶';
+            disc.classList.remove('spinning');
+        } else {
             try {
                 await audio.play();
-                isPlaying = true;
                 playBtn.textContent = '⏸';
                 disc.classList.add('spinning');
             } catch (error) {
-                console.log('Error playing audio:', error);
+                console.log('Error playing music:', error);
             }
-        } else {
-            audio.pause();
-            isPlaying = false;
-            playBtn.textContent = '▶';
-            disc.classList.remove('spinning');
         }
+        isPlaying = !isPlaying;
     });
     
-    // Volume button
-    let isMuted = false;
-    volumeBtn.addEventListener('click', () => {
+    volBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         isMuted = !isMuted;
         audio.muted = isMuted;
-        volumeBtn.textContent = isMuted ? '🔇' : '🔊';
+        volBtn.textContent = isMuted ? '🔇' : '🔊';
     });
     
-    // Make progress bar clickable
-    const progressContainer = progressBar.parentElement;
-    progressContainer.addEventListener('click', (e) => {
-        if (!audio.duration) return;
-        const rect = progressContainer.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const percent = clickX / rect.width;
-        audio.currentTime = percent * audio.duration;
-    });
-}
-
-// Surprise Button
-function initSurpriseButton() {
+    // ========================================
+    // CONFETTI
+    // ========================================
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const ctx = confettiCanvas.getContext('2d');
+    
+    let confettiPieces = [];
+    let confettiAnimationId = null;
+    
+    function resizeConfettiCanvas() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+    }
+    
+    resizeConfettiCanvas();
+    window.addEventListener('resize', resizeConfettiCanvas);
+    
+    const confettiColors = ['#E8A598', '#F9D5D3', '#FDEAE0', '#FDF8F3', '#FFD93D'];
+    
+    function createConfettiPiece() {
+        return {
+            x: Math.random() * confettiCanvas.width,
+            y: -10,
+            size: Math.random() * 8 + 4,
+            color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+            speedY: Math.random() * 3 + 1,
+            speedX: (Math.random() - 0.5) * 2,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 4
+        };
+    }
+    
+    function launchConfetti() {
+        confettiPieces = [];
+        for (let i = 0; i < 100; i++) {
+            confettiPieces.push(createConfettiPiece());
+        }
+        animateConfetti();
+    }
+    
+    function animateConfetti() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        
+        confettiPieces.forEach((piece, index) => {
+            piece.y += piece.speedY;
+            piece.x += piece.speedX;
+            piece.rotation += piece.rotationSpeed;
+            
+            ctx.save();
+            ctx.translate(piece.x, piece.y);
+            ctx.rotate((piece.rotation * Math.PI) / 180);
+            ctx.fillStyle = piece.color;
+            ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
+            ctx.restore();
+            
+            if (piece.y > confettiCanvas.height + 10) {
+                confettiPieces.splice(index, 1);
+            }
+        });
+        
+        if (confettiPieces.length > 0) {
+            confettiAnimationId = requestAnimationFrame(animateConfetti);
+        }
+    }
+    
+    // ========================================
+    // SURPRISE BUTTON
+    // ========================================
     const surpriseBtn = document.getElementById('surpriseBtn');
     
     surpriseBtn.addEventListener('click', () => {
         launchConfetti();
-        showSurpriseMessage();
-    });
-}
-
-function launchConfetti() {
-    const colors = ['#D88C7A', '#E8A698', '#F2C4B9', '#F9D8CF', '#FFEBE6'];
-    const confettiCount = 120;
-    
-    for (let i = 0; i < confettiCount; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = '-20px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-            confetti.style.width = (Math.random() * 10 + 5) + 'px';
-            confetti.style.height = confetti.style.width;
-            
-            document.body.appendChild(confetti);
-            
+        
+        // Create floating hearts
+        for (let i = 0; i < 10; i++) {
             setTimeout(() => {
-                confetti.remove();
-            }, 3000);
-        }, i * 15);
-    }
-}
-
-function showSurpriseMessage() {
-    const messages = [
-        "❤️ Happy Anniversary! ❤️",
-        "🎉 You two are amazing! 🎉",
-        "💕 Here's to forever! 💕",
-        "✨ So much love for you both! ✨"
-    ];
-    
-    const message = messages[Math.floor(Math.random() * messages.length)];
-    
-    const msgEl = document.createElement('div');
-    msgEl.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(135deg, #D88C7A, #E8A698);
-        color: white;
-        padding: 28px 40px;
-        border-radius: 24px;
-        font-family: 'Outfit', sans-serif;
-        font-size: 1.375rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        z-index: 10001;
-        box-shadow: 0 16px 48px rgba(216, 140, 122, 0.35);
-        text-align: center;
-    `;
-    msgEl.textContent = message;
-    
-    document.body.appendChild(msgEl);
-    
-    setTimeout(() => {
-        msgEl.style.transition = 'opacity 0.4s ease';
-        msgEl.style.opacity = '0';
-        setTimeout(() => msgEl.remove(), 400);
-    }, 2500);
-}
-
-// Counter Animation
-function initCounters() {
-    const counters = document.querySelectorAll('.funfact-number');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.dataset.target);
-                animateCounter(counter, target);
-                observer.unobserve(counter);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => observer.observe(counter));
-}
-
-function animateCounter(element, target) {
-    let current = 0;
-    const duration = 2200;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
+                createFloatingHeart();
+            }, i * 100);
         }
-    }, 16);
-}
+    });
+    
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.bottom = '0';
+        heart.style.fontSize = '2rem';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '9998';
+        heart.style.animation = 'floatUp 3s ease-out forwards';
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
+    }
+    
+    // Add CSS for floating hearts
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
