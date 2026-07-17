@@ -1,229 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>❤️ Jerin & Shihab - 2nd Anniversary</title>
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <!-- Progress Indicator -->
     <div class="progress-indicator">
-        <div class="progress-dots">
-            <div class="progress-dot active" data-chapter="1"></div>
-            <div class="progress-dot" data-chapter="2"></div>
-            <div class="progress-dot" data-chapter="3"></div>
-            <div class="progress-dot" data-chapter="4"></div>
-        </div>
-        <div class="progress-text">Chapter 1 of 4</div>
+      <div class="progress-dots">
+        <div class="progress-dot active" data-chapter="1"></div>
+        <div class="progress-dot" data-chapter="2"></div>
+        <div class="progress-dot" data-chapter="3"></div>
+        <div class="progress-dot" data-chapter="4"></div>
+      </div>
+      <div class="progress-text">Chapter 1 of 4</div>
     </div>
 
     <!-- Floating Music Player -->
     <div class="music-player" id="musicPlayer">
-        <div class="disc-container">
-            <div class="disc" id="disc">
-                <div class="disc-hole"></div>
-            </div>
+      <div class="disc-container">
+        <div class="disc" id="disc">
+          <div class="disc-hole"></div>
         </div>
-        <div class="music-controls">
-            <button class="music-btn" id="playBtn">▶</button>
-            <button class="music-btn" id="volBtn">🔊</button>
-        </div>
+      </div>
+      <div class="music-controls">
+        <button class="music-btn" id="playBtn">▶</button>
+        <button class="music-btn" id="volBtn">🔊</button>
+      </div>
     </div>
 
     <!-- Surprise Button -->
     <button class="surprise-btn" id="surpriseBtn">
-        <span>✨</span>
+      <span>✨</span>
     </button>
 
     <!-- Chapter 1: The Invitation (Hero) -->
     <section class="chapter chapter-1 active" id="chapter1">
-        <div class="chapter-content">
-            <div class="invitation-envelope" id="invitationEnvelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-seal">
-                    <span class="seal-heart">❤️</span>
-                </div>
-                <div class="envelope-body">
-                    <p class="envelope-text">Open Me</p>
-                </div>
-            </div>
-            
-            <div class="invitation-content" id="invitationContent">
-                <div class="invitation-card">
-                    <p class="invitation-preamble">You're invited to celebrate</p>
-                    <h1 class="chapter-title">Happy 2nd Anniversary Shihab</h1>
-                    <p class="invitation-date">July 18, 2024</p>
-                    <p class="invitation-quote">"Two amazing years, countless memories, endless laughter, and a lifetime still waiting."</p>
-                    <button class="chapter-btn" data-next="chapter2">
-                        Begin Our Journey →
-                    </button>
-                </div>
-            </div>
+      <div class="chapter-content">
+        <div class="invitation-envelope" id="invitationEnvelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">
+            <span class="seal-heart">❤️</span>
+          </div>
+          <div class="envelope-body">
+            <p class="envelope-text">Open Me</p>
+          </div>
         </div>
-        
-        <div class="floating-elements">
-            <span class="floating-heart" style="top:10%; left:10%; animation-delay:0s;">❤️</span>
-            <span class="floating-heart" style="top:20%; right:15%; animation-delay:2s;">💕</span>
-            <span class="floating-heart" style="top:60%; left:20%; animation-delay:4s;">💗</span>
-            <span class="floating-star" style="top:40%; right:10%; animation-delay:1s;">✨</span>
-            <span class="floating-star" style="top:70%; right:25%; animation-delay:3s;">⭐</span>
+
+        <div class="invitation-content" id="invitationContent">
+          <div class="invitation-card">
+            <p class="invitation-preamble">You're invited to celebrate</p>
+            <h1 class="chapter-title">Happy 2nd Anniversary Shihab</h1>
+            <p class="invitation-date">July 18, 2024</p>
+            <p class="invitation-quote">
+              "Two amazing years, countless memories, endless laughter, and a
+              lifetime still waiting."
+            </p>
+            <button class="chapter-btn" data-next="chapter2">
+              Begin Our Journey →
+            </button>
+          </div>
         </div>
+      </div>
+
+      <div class="floating-elements">
+        <span
+          class="floating-heart"
+          style="top: 10%; left: 10%; animation-delay: 0s"
+          >❤️</span
+        >
+        <span
+          class="floating-heart"
+          style="top: 20%; right: 15%; animation-delay: 2s"
+          >💕</span
+        >
+        <span
+          class="floating-heart"
+          style="top: 60%; left: 20%; animation-delay: 4s"
+          >💗</span
+        >
+        <span
+          class="floating-star"
+          style="top: 40%; right: 10%; animation-delay: 1s"
+          >✨</span
+        >
+        <span
+          class="floating-star"
+          style="top: 70%; right: 25%; animation-delay: 3s"
+          >⭐</span
+        >
+      </div>
     </section>
 
     <!-- Chapter 2: Memory Scrapbook (was Chapter3) -->
     <section class="chapter chapter-2" id="chapter2">
-        <div class="chapter-header">
-            <p class="chapter-number">Chapter 2</p>
-            <h2 class="chapter-title">Memory Scrapbook</h2>
-        </div>
-        
-        <div class="chapter-content">
-            <div class="scrapbook">
-                <div class="scrapbook-page">
-                    <div class="polaroid polaroid-1">
-                        <img src="assets/images/memory1.jpg" alt="Memory 1">
-                        <p class="polaroid-caption">Our first trip ✈️</p>
-                    </div>
-                    
-                    <div class="polaroid polaroid-2">
-                        <img src="assets/images/memory2.jpg" alt="Memory 2">
-                        <p class="polaroid-caption">Birthday surprise! 🎂</p>
-                    </div>
-                    
-                    <div class="sticky-note note-1">
-                        <p>Best day ever! 💕</p>
-                    </div>
-                    
-                    <div class="polaroid polaroid-3">
-                        <img src="assets/images/memory3.jpg" alt="Memory 3">
-                        <p class="polaroid-caption">Coffee dates ☕</p>
-                    </div>
-                    
-                    <div class="sticky-note note-2">
-                        <p>I love you!</p>
-                    </div>
-                    
-                    <div class="polaroid polaroid-4">
-                        <img src="assets/images/memory4.jpg" alt="Memory 4">
-                        <p class="polaroid-caption">Late night talks 🌙</p>
-                    </div>
-                </div>
+      <div class="chapter-header">
+        <p class="chapter-number">Chapter 2</p>
+        <h2 class="chapter-title">Memory Scrapbook</h2>
+      </div>
+
+      <div class="chapter-content">
+        <div class="scrapbook">
+          <div class="scrapbook-page">
+            <div class="polaroid polaroid-1">
+              <img src="assets/images/memory1.jpeg" alt="Memory 1" />
+              <p class="polaroid-caption">Our first Date💕</p>
             </div>
-            
-            <button class="chapter-btn" data-next="chapter3">
-                More Memories →
-            </button>
+
+            <div class="polaroid polaroid-2">
+              <img src="assets/images/memory2.jpeg" alt="Memory 2" />
+              <p class="polaroid-caption">Our first kiss💕</p>
+            </div>
+
+            <div class="sticky-note note-1">
+              <p>Best day ever! 💕</p>
+            </div>
+
+            <div class="polaroid polaroid-3">
+              <img src="assets/images/memory3.jpeg" alt="Memory 3" />
+              <p class="polaroid-caption">Together always ✨</p>
+            </div>
+
+            <div class="sticky-note note-2">
+              <p>I love you!</p>
+            </div>
+
+            <div class="polaroid polaroid-4">
+              <img src="assets/images/memory4.jpeg" alt="Memory 4" />
+              <p class="polaroid-caption">Coffee dates ☕</p>
+            </div>
+          </div>
         </div>
+
+        <button class="chapter-btn" data-next="chapter3">
+          More Memories →
+        </button>
+      </div>
     </section>
 
     <!-- Chapter 3: The Cake (was Chapter4) -->
     <section class="chapter chapter-3" id="chapter3">
-        <div class="chapter-header">
-            <p class="chapter-number">Chapter 3</p>
-            <h2 class="chapter-title">Let's Celebrate!</h2>
-        </div>
-        
-        <div class="chapter-content">
-            <div class="cake-container" id="cakeContainer">
-                <div class="balloons" id="balloons"></div>
-                <div class="cake">
-                    <div class="cake-top"></div>
-                    <div class="cake-layer"></div>
-                    <div class="cake-layer cake-layer-2"></div>
-                    <div class="cake-candle">
-                        <div class="flame" id="flame"></div>
-                        <div class="smoke"></div>
-                    </div>
-                    <div class="cake-candle cake-candle-2">
-                        <div class="flame flame-2"></div>
-                        <div class="smoke"></div>
-                    </div>
-                    <div class="cake-candle cake-candle-3">
-                        <div class="flame flame-3"></div>
-                        <div class="smoke"></div>
-                    </div>
-                    <div class="cake-knife" id="cakeKnife">
-                        <div class="handle"></div>
-                        <div class="blade"></div>
-                    </div>
-                </div>
-                <button class="blow-btn" id="blowBtn">🎂 Blow the Candles</button>
-                <p class="cake-hint" id="cakeHint" style="display: none;">Tap to cut the cake!</p>
+      <div class="chapter-header">
+        <p class="chapter-number">Chapter 3</p>
+        <h2 class="chapter-title">Let's Celebrate!</h2>
+      </div>
+
+      <div class="chapter-content">
+        <div class="cake-container" id="cakeContainer">
+          <div class="balloons" id="balloons"></div>
+          <div class="cake">
+            <div class="cake-top"></div>
+            <div class="cake-layer"></div>
+            <div class="cake-layer cake-layer-2"></div>
+            <div class="cake-candle">
+              <div class="flame" id="flame"></div>
+              <div class="smoke"></div>
             </div>
-            
-            <div class="gift-message" id="giftMessage">
-                <div class="message-card">
-                    <p class="message-preamble"><span id="typing-preamble"></span><span class="typing-cursor" id="cursor-preamble"></span></p>
-                    <p class="message-text" style="display: none;" id="typing-text-container">
-                        <span id="typing-text"></span><span class="typing-cursor" id="cursor-text"></span>
-                    </p>
-                    <p class="message-signoff" style="display: none;" id="typing-signoff-container">
-                        <span id="typing-signoff"></span><span class="typing-cursor" id="cursor-signoff"></span>
-                    </p>
-                </div>
+            <div class="cake-candle cake-candle-2">
+              <div class="flame flame-2"></div>
+              <div class="smoke"></div>
             </div>
-            
-            <button class="chapter-btn" data-next="chapter4" id="finalChapterBtn" style="display: none;">
-                The Final Chapter →
-            </button>
+            <div class="cake-candle cake-candle-3">
+              <div class="flame flame-3"></div>
+              <div class="smoke"></div>
+            </div>
+            <div class="cake-knife" id="cakeKnife">
+              <div class="handle"></div>
+              <div class="blade"></div>
+            </div>
+          </div>
+          <button class="blow-btn" id="blowBtn">🎂 Blow the Candles</button>
+          <p class="cake-hint" id="cakeHint" style="display: none">
+            Tap to cut the cake!
+          </p>
         </div>
+
+        <div class="gift-message" id="giftMessage">
+          <div class="message-card">
+            <p class="message-preamble">
+              <span id="typing-preamble"></span
+              ><span class="typing-cursor" id="cursor-preamble"></span>
+            </p>
+            <p
+              class="message-text"
+              style="display: none"
+              id="typing-text-container"
+            >
+              <span id="typing-text"></span
+              ><span class="typing-cursor" id="cursor-text"></span>
+            </p>
+            <p
+              class="message-signoff"
+              style="display: none"
+              id="typing-signoff-container"
+            >
+              <span id="typing-signoff"></span
+              ><span class="typing-cursor" id="cursor-signoff"></span>
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="chapter-btn"
+          data-next="chapter4"
+          id="finalChapterBtn"
+          style="display: none"
+        >
+          The Final Chapter →
+        </button>
+      </div>
     </section>
 
     <!-- Chapter 4: Forever (was Chapter5) -->
     <section class="chapter chapter-4" id="chapter4">
-        <div class="chapter-content">
-            <div class="final-card">
-                <h1 class="final-title">Happy 2nd Anniversary Shihab</h1>
-                <h2 class="final-names">For My Love</h2>
-                <div class="final-countdown" id="countdown">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">--</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">--</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">--</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">--</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
-                </div>
-                <p class="final-quote">"Grow old with me, the best is yet to be."</p>
-                <div class="final-wishes">
-                    <p class="wish-card">Made with ❤️ by Jerin just for you</p>
-                    <p class="wish-card">Here's to many more years of love, laughter, and unforgettable memories together</p>
-                </div>
-                <button class="restart-btn" id="restartBtn">
-                    ← Start Over
-                </button>
+      <div class="chapter-content">
+        <div class="final-card">
+          <h1 class="final-title">Happy 2nd Anniversary Shihab</h1>
+          <h2 class="final-names">For My Love</h2>
+          <div class="final-countdown" id="countdown">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">--</span>
+              <span class="countdown-label">Days</span>
             </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">--</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">--</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="seconds">--</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          <p class="final-quote">"Grow old with me, the best is yet to be."</p>
+          <div class="final-wishes">
+            <p class="wish-card">Made with ❤️ by Jerin just for you</p>
+            <p class="wish-card">
+              Here's to many more years of love, laughter, and unforgettable
+              memories together
+            </p>
+          </div>
+          <button class="restart-btn" id="restartBtn">← Start Over</button>
         </div>
-        
-        <div class="floating-elements final-floating">
-            <span class="floating-heart" style="top:10%; left:5%; animation-delay:0s;">❤️</span>
-            <span class="floating-heart" style="top:15%; right:10%; animation-delay:1.5s;">💕</span>
-            <span class="floating-heart" style="top:30%; left:15%; animation-delay:0.8s;">💗</span>
-            <span class="floating-star" style="top:50%; right:5%; animation-delay:2.2s;">✨</span>
-            <span class="floating-star" style="top:70%; left:8%; animation-delay:3s;">⭐</span>
-            <span class="floating-heart" style="top:80%; right:20%; animation-delay:1s;">💖</span>
-        </div>
+      </div>
+
+      <div class="floating-elements final-floating">
+        <span
+          class="floating-heart"
+          style="top: 10%; left: 5%; animation-delay: 0s"
+          >❤️</span
+        >
+        <span
+          class="floating-heart"
+          style="top: 15%; right: 10%; animation-delay: 1.5s"
+          >💕</span
+        >
+        <span
+          class="floating-heart"
+          style="top: 30%; left: 15%; animation-delay: 0.8s"
+          >💗</span
+        >
+        <span
+          class="floating-star"
+          style="top: 50%; right: 5%; animation-delay: 2.2s"
+          >✨</span
+        >
+        <span
+          class="floating-star"
+          style="top: 70%; left: 8%; animation-delay: 3s"
+          >⭐</span
+        >
+        <span
+          class="floating-heart"
+          style="top: 80%; right: 20%; animation-delay: 1s"
+          >💖</span
+        >
+      </div>
     </section>
 
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
 
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
