@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CHAPTER NAVIGATION
     // ========================================
     let currentChapter = 1;
-    const totalChapters = 5;
+    const totalChapters = 4;
     
     const progressDots = document.querySelectorAll('.progress-dot');
     const progressText = document.querySelector('.progress-text');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     restartBtn.addEventListener('click', () => {
         goToChapter(1);
         resetChapter1();
-        resetChapter4();
+        resetChapter3();
     });
     
     progressDots.forEach((dot, index) => {
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // ========================================
-    // CHAPTER 4 - CAKE
+    // CHAPTER 3 - CAKE
     // ========================================
     const cakeContainer = document.getElementById('cakeContainer');
     const giftMessage = document.getElementById('giftMessage');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const smokes = document.querySelectorAll('.smoke');
     let candlesBlown = false;
     
-    function resetChapter4() {
+    function resetChapter3() {
         cakeContainer.classList.remove('cake-cut');
         giftMessage.classList.remove('visible');
         finalChapterBtn.style.display = 'none';
